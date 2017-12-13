@@ -1,0 +1,47 @@
+<p>
+  <strong>Name:</strong>
+  <%= @vehicle.name %>
+</p>
+
+<p>
+  <strong>Company:</strong>
+  <%= @vehicle.company %>
+</p>
+
+<p>
+  <strong>Engine number:</strong>
+  <%= @vehicle.engine_number %>
+</p>
+
+<p>
+  <strong>Color:</strong>
+  <%= @vehicle.color %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @vehicle.type %>
+</p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= @vehicle.owner %>
+</p>
+
+<p>
+  <strong>Purchase On:</strong>
+  <%= @vehicle.purchased_on.strftime("%d-%b-%Y") %>
+</p>
+
+<p>
+  <strong>Mobile:</strong>
+  <%= @vehicle.mobile %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @vehicle.address %>
+</p>
+
+<%= link_to 'Edit', edit_vehicle_path(@vehicle), :class=>"btn btn-primary btn-sm",:style=>"color:white" %>
+<%= link_to 'Back', vehicles_path, :class=>"btn btn-info btn-sm",:style=>"color:white" %>

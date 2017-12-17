@@ -9,8 +9,10 @@
   </head>
 
   <body>
-  	<!-- <p class="notice"><%#= notice %></p>
-    <p class="alert"><%#= alert %></p> -->
+  	<%= render partial: "shared/flash_messages", flash: flash %> 
+    <% if user_signed_in? %>      
+        <%= link_to('Logout', destroy_user_session_path, method: :delete, :class=>"pull-right") %>              
+    <% end %>
     <%= yield %>
   </body>
 </html>

@@ -21,6 +21,7 @@ class Api::V1::VerifyRegistrationsController < ApplicationController
   			@vehicle.locations.create(:lattitude => lat, :longitude => long, :address => address)
   			s = true
   			m = "Success"
+  			Notifymailer.notify_location(@vehicle).deliver
   		rescue Exception => invalid
   			puts "***************************************************"
   			s = false

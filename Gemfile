@@ -60,6 +60,7 @@ gem "twitter-bootstrap-rails"
 gem 'bootstrap-datepicker-rails'
 gem "font-awesome-rails"
 gem "figaro"
+gem "geocoder"
 
 group :production do
   gem 'rails_12factor'

@@ -1,5 +1,9 @@
 class Vehicle
   include Mongoid::Document
+
+  embeds_many :locations
+
+  field :access_token, type: String
   field :name, type: String
   field :company, type: String
   field :engine_number, type: String

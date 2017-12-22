@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-
+  <%= f.hidden_field :access_token, :value => (vehicle.access_token || SecureRandom.hex) %>
   <div class="field">
     <%= f.label :name %>
     <%= f.text_field :name %>

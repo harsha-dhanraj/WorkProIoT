@@ -14,14 +14,19 @@ class Api::V1::VerifyRegistrationsController < ApplicationController
   		begin
   			# @vehicle = Vehicle.find_by_access_token(access_token)
   			@vehicle = Vehicle.find_by(:access_token => access_token)
-  			puts "vehicle found #{@vehicle.inspect}"
+  			puts "vehicle found #{@vehicle.inspect}"			
+			query = "#{lat},#{long}"
+			first_result = Geocoder.search(query).first			
+			address = first_result.address rescue "Unknown Place"
 
-			geo_localization = "[#{lat},#{long}]"
-			address=Geocoder.address(geo_localization)
+			puts "*************************"
+			puts "Address => #{address}"
+			puts "sending mail to owner"
+			puts "*************************"
+			NotifyMailer.notify_location(@vehicle).deliver
   			@vehicle.locations.create(:lattitude => lat, :longitude => long, :address => address)
   			s = true
-  			m = "Success"
-  			Notifymailer.notify_location(@vehicle).deliver
+  			m = "Success"  			
   		rescue Exception => invalid
   			puts "***************************************************"
   			s = false

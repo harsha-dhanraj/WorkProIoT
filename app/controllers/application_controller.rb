@@ -9,7 +9,8 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    vehicles_path # Or :prefix_to_your_route
+    # vehicles_path # Or :prefix_to_your_route
+    patients_path
   end
 
   def after_sign_out_path_for(resource)    
@@ -17,6 +18,6 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name,:mobile_no])
   end
 end

@@ -1,0 +1,104 @@
+<!-- <%#= form_for(patient) do |f| %>
+  <%# if patient.errors.any? %>
+    <div id="error_explanation">
+      <h2><%#= pluralize(patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
+
+      <ul>
+      <%# patient.errors.full_messages.each do |message| %>
+        <li><%#= message %></li>
+      <%# end %>
+      </ul>
+    </div>
+  <%# end %>
+
+  <div class="field">
+    <%#= f.label :name %>
+    <%#= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%#= f.label :disease %>
+    <%#= f.text_field :disease %>
+  </div>
+
+  <div class="field">
+    <%#= f.label :personal_contact_no %>
+    <%#= f.text_field :personal_contact_no %>
+  </div>
+
+  <div class="field">
+    <%#= f.label :emergency_contact_no %>
+    <%#= f.text_field :emergency_contact_no %>
+  </div>
+
+  <div class="field">
+    <%#= f.label :address %>
+    <%#= f.text_field :address %>
+  </div>
+
+  <div class="actions">
+    <%#= f.submit %>
+  </div>
+<%# end %> -->
+
+<div id="registerPatient" style="margin-top:50px;" class="mainbox col-md-10 col-md-offset-1 col-sm-8 col-sm-offset-2">
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <div class="panel-title">Add Patient</div>
+      <!-- <div style="float:right; font-size: 85%; position: relative; top:-10px"><%#= link_to "Sign In", new_session_path(resource_name) %></div> -->
+    </div>  
+    <div class="panel-body" >                            
+      <%= form_for(patient, :html => {:id=>"signupform", :class=>"form-horizontal", :role=>"form"}) do |f| %>
+        <% if patient.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
+
+            <ul>
+            <% patient.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <%#= f.hidden_field :user_id, :value => current_user.id %>
+        <div class="form-group">
+          <label for="name" class="col-md-3 control-label">Name</label>
+          <div class="col-md-9">                                        
+            <%= f.text_field :name,autofocus: true, :class=>"form-control", :placeholder =>"Name", :required => true %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="disease" class="col-md-3 control-label">Disease</label>
+          <div class="col-md-9">                                        
+            <%= f.text_field :disease, :class=>"form-control", :placeholder =>"Disease", :required => true %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="personal_contact_no" class="col-md-3 control-label">Personal Contact Number</label>
+          <div class="col-md-9">                                        
+            <%= f.text_field :personal_contact_no, :class=>"form-control", :placeholder =>"Personal Contact Number", :required => true %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="emergency_contact_no" class="col-md-3 control-label">Emergency Contact Number</label>
+          <div class="col-md-9">                                        
+            <%= f.text_field :emergency_contact_no, :class=>"form-control", :placeholder =>"Mobile Number", :required => true %>
+          </div>
+        </div>  
+        <div class="form-group">
+          <label for="name" class="col-md-3 control-label">Address</label>
+          <div class="col-md-9">                                        
+            <%= f.text_area :address, :class=>"form-control", :placeholder =>"Address", :required => true %>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-offset-3 col-md-9">
+            <%= f.submit "Add Patient", :id=>"btn-signup", :class=>"btn btn-success" %>
+            <%= link_to 'Back', patients_path, :class=>"btn btn-info",:style=>"color:white;" %>
+          </div>
+        </div>                                                              
+      <% end %>
+    </div>
+  </div>
+</div> 
+

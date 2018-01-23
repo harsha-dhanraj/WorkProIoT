@@ -1,5 +1,6 @@
 class User
   include Mongoid::Document
+  embeds_many :patients
   ## Database authenticatable
   field :email,              type: String, default: ""
   field :encrypted_password, type: String, default: ""
@@ -34,8 +35,9 @@ class User
          :recoverable, :rememberable, :trackable, :validatable
 
   ## Database authenticatable
-  field :first_name,         type: String, default: ""
-  field :last_name,          type: String, default: ""
+  field :name,               type: String, default: ""
+  field :specialization,     type: String, default: ""
+  field :mobile_no,              type: String, default: ""
   field :email,              type: String, default: ""
   field :encrypted_password, type: String, default: ""
 
